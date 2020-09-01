@@ -7,7 +7,7 @@ const { result } = require('lodash')
 const DBURL="mongodb+srv://urlshortner:urlshortner@node.bczjx.mongodb.net/nodetest?retryWrites=true&w=majority"
 mongoose.connect(DBURL,{useNewUrlParser:true,useUnifiedTopology:true})
 .then((result)=>{console.log('connected');
-                 app.listen(3000)})
+                 app.listen(process.env.PORT || 5000)})
 .catch((err)=>console.log(err))
 
 
