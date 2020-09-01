@@ -13,11 +13,23 @@ body{
     min-height: 100%;
 }
 .footer{
-    position: absolute;
-    bottom:0;
-    margin: 0;
+    /* position: absolute; */
     width:100%;
-    
+    padding: 10px;
+    display:block;
+    background-color: #343A40;
+    height: 200px !important;
+    position: relative;
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    color:rgb(255, 255, 255);
+}
+.footer-elements{
+    min-width: 33%;
+    /* text-align: center; */
+    /* border:2px solid white; */
 }
 .upload-container{
     /* border:2px solid red; */
@@ -31,7 +43,6 @@ form{
     display: flex;
     flex-direction: row ;
     margin: 5% 15% 5% 15%; 
-    /* border:2px solid white; */
     padding:20px;
     
 }
@@ -44,11 +55,22 @@ input{
     width: 100%;
 }
 .form-row{
-    /* flex-wrap:wrap; */
     width: 100%;
 }
 
 small{
     color: honeydew;
 }
-
+.me{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    /* padding-left:8%; */
+}
+.this{
+    margin: 3px;
+}
+.design{
+    text-align:right;
+}
