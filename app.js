@@ -46,7 +46,7 @@ app.post('/',(req,res)=>{
             const datainstance= new Url(req.body)
                 datainstance.save()
                 .then((result)=>{
-                res.render('home',{status:`Shortend Url : thinn.heroku.com/${req.body.shortname} `})
+                res.render('home',{status:`Shortend Url : http://thinn.herokuapp.com/${req.body.shortname} `})
                 res.end()
             })
                 .catch((err)=>console.log(err))
