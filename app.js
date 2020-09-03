@@ -10,7 +10,18 @@ mongoose.connect(DBURL,{useNewUrlParser:true,useUnifiedTopology:true})
                  app.listen(process.env.PORT || 5000)})
 .catch((err)=>console.log(err))
 
-
+function is_url(str)
+{
+  regexp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+        if (regexp.test(str))
+        {
+          return true;
+        }
+        else
+        {
+          return false;
+        }
+}
 
 const app=express()
 
@@ -43,15 +54,30 @@ app.post('/',(req,res)=>{
             }
         }
         if (count===0) {
-            const datainstance= new Url(req.body)
+            if(req.body.shortname==="" || req.body.link===""){
+            res.render('home',{status:"Enter a Valid Url"})
+                res.end()
+            }
+            
+            else{
+                var testurl=is_url(req.body.link);
+                if (testurl) {
+                const datainstance= new Url(req.body)
                 datainstance.save()
                 .then((result)=>{
                 res.render('home',{status:`Shortend Url : http://thinn.herokuapp.com/${req.body.shortname} `})
-                res.end()
+                res.end()    
             })
-                .catch((err)=>console.log(err))
+            .catch((err)=>console.log(err))
+            }
+            else{
+                res.render('home',{status:"Url not valid"})
+            }
+
+        }
         } else {
             res.render('home',{ status:"Shortname-taken" })
+            res.end();
         }
 
     })
