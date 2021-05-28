@@ -178,4 +178,5 @@ nav{
     font: size 200px;   
     padding:0.8em ;
     border-radius: 10px;
+    align-self: center;
 }
