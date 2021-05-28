@@ -3,6 +3,7 @@ const mongoose=require('mongoose')
 const Url=require('./models/url')
 const { result } = require('lodash')
 
+const app=express()
 
 const DBURL="mongodb+srv://urlshortner:urlshortner@node.bczjx.mongodb.net/nodetest?retryWrites=true&w=majority"
 mongoose.connect(DBURL,{useNewUrlParser:true,useUnifiedTopology:true})
@@ -23,7 +24,6 @@ function is_url(str)
         }
 }
 
-const app=express()
 
 //view engine
 app.set('view engine','ejs')
@@ -88,7 +88,9 @@ app.post('/',(req,res)=>{
     
     
 })
-
+app.get('/dev',(req,res)=>{
+    res.render("root");
+})
 app.use((req,res)=>{
     const incomingurl=req.url.slice(1)
     console.log(incomingurl)
