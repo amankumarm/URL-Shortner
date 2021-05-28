@@ -1,5 +1,5 @@
 import React from 'react'
-import '../static/css/LandingPage.css'
+import '../static/css/index.css'
 import image from "../static/icons/link.png" 
 import  git from "../static/icons/github.png"
 import illus from "../static/icons/illus.png"
