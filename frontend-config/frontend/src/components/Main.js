@@ -3,11 +3,8 @@ import React,{useState} from 'react'
 import '../static/css/index.css'
 import  git from "../static/icons/github.png"
 import illus2 from "../static/icons/illus2.png"
-import {IP} from './constants'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {Link} from 'react-router-dom'
-import { set } from 'lodash'
 function Main(){
     // const 
     const [link,setlink]=useState("")
@@ -18,7 +15,7 @@ function Main(){
         console.log(link,shortname)
         const body={link,shortname}
         setshortend(" Hold on we are preparing your link.  ")
-        const resp= await axios.post(`http://localhost:5000/`,body)
+        const resp= await axios.post(`http://thinn.herokuapp.com/`,body)
         console.log(resp)
         switch (resp.status) {
             case 200:
@@ -67,7 +64,7 @@ function Main(){
             <p className="s_a_l">Shorten Any Links</p>
             <p className="desc2"> Build and Protect your Brand using powerful and recognizable short Links. <span className="its_free">its free forever</span></p>
                 <p>{shortend}</p>
-                <div  className="input-fields " action="/" method="POST">
+                <div  className="input-fields">
                             <input type="text" className="form-control" name='link' onChange={e => setlink(e.target.value)} placeholder="Link" />
                             <input type="text" className="form-control" name='shortname' onChange={e=>setshortname(e.target.value)}placeholder="Thinn.herokuapp.com/< Your Reference Here > " aria-describedby="emailHelp" />
                 </div>
