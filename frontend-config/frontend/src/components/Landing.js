@@ -8,7 +8,7 @@ function LandingPage(){
     return(<>
     <div className="outer">
         <nav>
-            <h3><Link to="/">Thinn.io</Link></h3>
+            <h3><a href="/">Thinn.io</a></h3>
             <a href="https://github.com/amankumarm/URL-Shortner" target="_blank"><img src={git}></img>
             </a>
         </nav>

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development --watch ./frontend/src/index.js --output ../static/js/main.js",
-    "build": "webpack --mode production ./frontend/src/index.js --output ../static/js/main.js"
+    "build": "webpack --mode production ./frontend/src/index.js --output ../static/js/main.js",
+    "build1": "webpack --mode production ./frontend/src/index.js --output ../static/js/404.js"
   },
   "keywords": [],
   "author": "",

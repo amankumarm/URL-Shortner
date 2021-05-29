@@ -13,8 +13,6 @@ function Main(){
     const [link,setlink]=useState("")
     const [shortname,setshortname]=useState("")
     const [shortend,setshortend]=useState("")
-    const [loading,setloading]=useState("")
-    const [isloading,setisloading]=useState(0)
     const clickHandler=async e =>{
         e.preventDefault()
         console.log(link,shortname)
@@ -60,7 +58,7 @@ function Main(){
     return (<>
         <ToastContainer />
         <nav className="nav2">
-            <h3><Link to="/">Thinn.io</Link></h3>
+            <h3><a href="/">Thinn.io</a></h3>
             <a href="https://github.com/amankumarm/URL-Shortner" target="_blank"><img src={git}></img>
             </a>
         </nav>

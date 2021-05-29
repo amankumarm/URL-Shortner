@@ -36,12 +36,10 @@ app.set('views','templates')
 app.use(express.static('static'))
 app.use(express.urlencoded({extended:true}))
 app.get('/',(req,res)=>{
-    res.render('home',{status:"Shorten Your Url "})
-    // res.end()
+    res.render('root')
 })
 
 app.post('/',bodyParser,(req,res)=>{
-    // console.log(req.body)
     Url.find()
     .then((result)=>{
         var incomingurl=req.body.shortname
@@ -83,13 +81,10 @@ app.post('/',bodyParser,(req,res)=>{
     .catch((err)=>{
         console.log(err)
     })
-    
-    
-    
 })
-app.get('/dev',(req,res)=>{
-    res.render("root");
-})
+// app.get('/dev',(req,res)=>{
+//     res.render("root");
+// })
 app.use((req,res)=>{
     const incomingurl=req.url.slice(1)
     console.log(incomingurl)
@@ -115,5 +110,4 @@ app.use((req,res)=>{
             }
 })
 .catch((err)=>console.log(err))
-
 })
