@@ -1,6 +1,7 @@
 const express=require('express')
 const mongoose=require('mongoose')
 const Url=require('./models/url')
+var bodyParser = require('body-parser').json()
 const { result } = require('lodash')
 
 const app=express()
@@ -39,7 +40,7 @@ app.get('/',(req,res)=>{
     // res.end()
 })
 
-app.post('/',(req,res)=>{
+app.post('/',bodyParser,(req,res)=>{
     // console.log(req.body)
     Url.find()
     .then((result)=>{
@@ -55,8 +56,7 @@ app.post('/',(req,res)=>{
         }
         if (count===0) {
             if(req.body.shortname==="" || req.body.link===""){
-            res.render('home',{status:"Enter a Valid Url"})
-                res.end()
+                res.status(200).send("Enter a Valid Url")
             }
             
             else{
@@ -65,19 +65,18 @@ app.post('/',(req,res)=>{
                 const datainstance= new Url(req.body)
                 datainstance.save()
                 .then((result)=>{
-                res.render('home',{status:`Shortend Url : http://thinn.herokuapp.com/${req.body.shortname} `})
+                res.status(201).send(`Shortend Url : http://thinn.herokuapp.com/${req.body.shortname} `)
                 res.end()    
             })
             .catch((err)=>console.log(err))
             }
             else{
-                res.render('home',{status:"Url not valid"})
+                res.status(200).send("Url not valid")
             }
 
         }
         } else {
-            res.render('home',{ status:"Shortname-taken" })
-            res.end();
+            res.status(200).send(" oops it seems like Shortname is already taken.") 
         }
 
     })
