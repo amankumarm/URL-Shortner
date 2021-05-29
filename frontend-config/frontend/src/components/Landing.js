@@ -3,11 +3,12 @@ import '../static/css/index.css'
 import image from "../static/icons/link.png" 
 import  git from "../static/icons/github.png"
 import illus from "../static/icons/illus.png"
+import { Link } from 'react-router-dom'
 function LandingPage(){
     return(<>
     <div className="outer">
         <nav>
-            <h3>Thinn.io</h3>
+            <h3><Link to="/">Thinn.io</Link></h3>
             <a href="https://github.com/amankumarm/URL-Shortner" target="_blank"><img src={git}></img>
             </a>
         </nav>
@@ -24,7 +25,7 @@ function LandingPage(){
                 <p>Our tool allows you to seamlessly track your audience with simple and easy to remember yet powerful links and provide your customers a unique tailored expeience.
                 </p>
                 </div>
-            <button className="btn">Get Started</button>
+            <button className="btn"><Link to="/thinn" >Get Started</Link></button>
         </div>
         <img className="illus" src={illus} />
     </div>
