@@ -3,7 +3,7 @@ const mongoose=require('mongoose')
 const Url=require('./models/url')
 var bodyParser = require('body-parser').json()
 const { result } = require('lodash')
-
+const forbot=require("./routes/new")
 const app=express()
 
 const DBURL="mongodb+srv://urlshortner:urlshortner@node.bczjx.mongodb.net/nodetest?retryWrites=true&w=majority"
@@ -35,6 +35,10 @@ app.set('views','templates')
 
 app.use(express.static('static'))
 app.use(express.urlencoded({extended:true}))
+
+
+
+app.use("/r",forbot)
 app.get('/',(req,res)=>{
     res.render('root')
 })
