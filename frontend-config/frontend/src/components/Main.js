@@ -15,7 +15,7 @@ function Main(){
         console.log(link,shortname)
         const body={link,shortname}
         setshortend(" Hold on we are preparing your link.")
-        const resp= await axios.post(`http://thinn.herokuapp.com/`,body)
+        const resp= await axios.post(`https://thinn.herokuapp.com/`,body)
         console.log(resp)
         switch (resp.status) {
             case 200:
